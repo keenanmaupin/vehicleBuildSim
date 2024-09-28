@@ -10,12 +10,15 @@ class Cli {
   // TODO: update the vehicles property to accept Truck and Motorbike objects as well
   // TODO: You will need to use the Union operator to define additional types for the array
   // TODO: See the AbleToTow interface for an example of how to use the Union operator
-  vehicles: (Car)[];
+    
+
+
+  vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
   // TODO: Update the constructor to accept Truck and Motorbike objects as well
-  constructor(vehicles: (Car)[]) {
+  constructor(vehicles: (Car | Truck | Motorbike)[]) {
     this.vehicles = vehicles;
   }
 
@@ -61,7 +64,7 @@ class Cli {
           name: 'vehicleType',
           message: 'Select a vehicle type',
           // TODO: Update the choices array to include Truck and Motorbike
-          choices: ['Car'],
+          choices: ['Car', 'Truck', 'Motorbike'],
         },
       ])
       .then((answers) => {
@@ -70,6 +73,14 @@ class Cli {
           this.createCar();
         }
         // TODO: add statements to create a truck or motorbike if the user selects the respective vehicle type
+       else if (answers.vehicleType === 'Truck') {
+         // create a truck
+          this.createTruck();
+        }
+        else if (answers.vehicleType === 'Motorbike') {
+         // create a motorbike
+          this.createMotorbike();
+        }
       });
   }
 
@@ -111,6 +122,7 @@ class Cli {
       .then((answers) => {
         const car = new Car(
           // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
+          //!come back here later on
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -170,10 +182,52 @@ class Cli {
         },
       ])
       .then((answers) => {
+        class Truck {
+          constructor(vin, make, model, year, capacity) {
+              this.vin = vin;
+              this.make = make;
+              this.model = model;
+              this.year = year;
+              this.towCapacity = towCapacity;
+          }
+      
+          // Example method to perform actions on the truck
+          performAction() {
+              console.log(`Performing action on ${this.make} ${this.model} (VIN: ${this.vin})`);
+          }
+      }
+      
+      // Placeholder for the answers object, which should be populated elsewhere in your code
+      const answers = {
+          vin: '1HGBH41JXMN109186',
+          make: 'Ford',
+          model: 'F-150',
+          year: 2020,
+          capacity: 1000
+      };
+      
+      // Array to store vehicle objects
+      const vehicles = [];
+      
+      // Create a new Truck using properties from the answers object
+      const truck = new Truck(answers.vin, answers.make, answers.model, answers.year, answers.capacity);
+      
+      // Push the truck to the vehicles array
+      vehicles.push(truck);
+      
+      // Set the selectedVehicleVin to the VIN of the truck
+      let selectedVehicleVin = truck.vin;
+      
+      // Perform actions on the truck
+      truck.performAction();
+      
         // TODO: Use the answers object to pass the required properties to the Truck constructor
         // TODO: push the truck to the vehicles array
         // TODO: set the selectedVehicleVin to the vin of the truck
         // TODO: perform actions on the truck
+
+        // Example of how to create a truck and push it to the vehicles array
+        
       });
   }
 
