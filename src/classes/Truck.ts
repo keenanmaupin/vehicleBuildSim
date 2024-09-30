@@ -48,7 +48,8 @@ class Truck extends Vehicle implements AbleToTow {
       this.year = year;
       this.weight = weight;
       this.topSpeed = topSpeed;
-      this.wheels = wheels[] ;
+      this.wheels = wheels;
+      
       this.towingCapacity = towingCapacity;
       
       if (wheels.length !== 4) {
@@ -57,12 +58,51 @@ class Truck extends Vehicle implements AbleToTow {
         this.wheels = wheels;
       }
     }
+  tow(vehicle: Truck | Motorbike | Car): void {
+    throw new Error('Method not implemented.');
+  }
     }
   
   // TODO: Implement the tow method from the AbleToTow interface
+  tow(Vehicle: Truck | Motorbike | Car): void {
+  tow(vehicle: Truck | Motorbike | Car): void {
+    console.log(`Towing ${vehicle.make} ${vehicle.model}`);
+    if (vehicle.weight <= this.towingCapacity) {
+      console.log('Vehicle is being towed');
+    } else {
+      console.log('Vehicle is too heavy to be towed');
+    }
+  }
+    tow(vehicle: Truck | Motorbike | Car): void {
+      console.log(`Towing ${vehicle.make} ${vehicle.model}`);
+      if (vehicle.weight <= this.towingCapacity) {
+        console.log('Vehicle is being towed');
+      } else {
+        console.log('Vehicle is too heavy to be towed');
+      }
+    }
   tow(vehicle: Truck | Motorbike | Car): void {
     // TODO: Get the make an model of the vehicle if it exists
     console.log(`Towing ${vehicle.make} ${vehicle.model}`);
+    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
+    if (vehicle.weight <= this.towingCapacity) {
+      console.log('Vehicle is being towed');
+    } else {
+      console.log('Vehicle is too heavy to be towed');
+    }
+    // TODO: If it is, log that the vehicle is being towed
+    // TODO: If it is not, log that the vehicle is too heavy to be towed
+  }
+    // TODO: Get the make an model of the vehicle if it exists
+    console.log(`Towing ${Vehicle.make} ${vehicle.model}`);
+    tow(vehicle: Truck | Motorbike | Car): void {
+      console.log(`Towing ${vehicle.make} ${vehicle.model}`);
+      if (vehicle.weight <= this.towingCapacity) {
+        console.log('Vehicle is being towed');
+      } else {
+        console.log('Vehicle is too heavy to be towed');
+      }
+    }
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
     if (this.weight <= this.towingCapacity) {
       console.log('Vehicle is  being toad');
@@ -74,22 +114,20 @@ class Truck extends Vehicle implements AbleToTow {
   }
 
   // TODO: Override the printDetails method from the Vehicle class
-   override printDetails(): void {
-  
-    super.printDetails();
-  
-    // TODO: The method should call the printDetails method of the parent class
-    // TODO: The method should log the details of the Truck
-    // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
-    console.log(`VIN: ${this.vin}`);
-    console.log(`Color: ${this.color}`);
-    console.log(`Make: ${this.make}`);
-    console.log(`Model: ${this.model}`);
-    console.log(`Year: ${this.year}`);
-    console.log(`Weight: ${this.weight} lbs`);
-    console.log(`Top Speed: ${this.topSpeed} mph`);
-
-  }
+   printDetails(): void {
+     super.printDetails();
+     console.log(`VIN: ${this.vin}`);
+     console.log(`Color: ${this.color}`);
+     console.log(`Make: ${this.make}`);
+     console.log(`Model: ${this.model}`);
+     console.log(`Year: ${this.year}`);
+     console.log(`Weight: ${this.weight} lbs`);
+     console.log(`Top Speed: ${this.topSpeed} mph`);
+   }
 
 // Export the Truck class as the default export
 export default Truck;
+function printDetails() {
+  throw new Error('Function not implemented.');
+}
+
